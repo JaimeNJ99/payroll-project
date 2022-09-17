@@ -1,0 +1,307 @@
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  background-size: 200% 100% !important;
+  animation: move 10s ease infinite;
+  transform: translate3d(0, 0, 0);
+  background: linear-gradient(45deg, #49D49D 10%, #A2C7E5 90%);
+  background: #242424;
+  height: 100vh;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  opacity: .9;
+}
+
+img.hosImg {
+  width: 40%;
+  height: auto;
+  display: block;
+  margin: auto;
+  border-radius: 1%;
+}
+.tutorial {
+  width: 100%;
+  margin: 3% auto 0 auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: #554e50;
+  max-width: 88%;
+  border-radius: 1%;
+}
+.tutorial .slider {
+  width: 100%;
+  background-color: #4d494a;
+  height: auto;
+}
+.tutorial .slider, h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #e0e0e0;
+  font-family: 'Open Sans', 'sans serif';
+}
+.tutorial .slider p {
+  color: #e0e0e0;
+  font-size: 1.2rem;
+  font-family: 'Open Sans', 'sans serif';
+  width:max-content;
+}
+.tutorial .slider ol {
+  list-style-type: none;
+}
+.tutorial .slider ol li {
+  margin-left: 5%;
+  color: #e0e0e0;
+  position: relative;
+  font-family: 'Open Sans', 'sans serif';
+}
+
+.tutorial .information {
+  width: 100%;
+  padding: 10px 10px;
+  margin-bottom: 30px;
+  color: #e0e0e0;
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+}
+.tutorial .information h1 {
+  color: #e0e0e0;/*333*/
+  font-size: 1.5rem;
+  padding: 0px 10px;
+  border-left: 3px solid #322E2D;
+}
+.tutorial .information h3 {
+  color: #e0e0e0;
+  font-size: 1rem;
+  font-weight: 300;
+  padding: 0px 10px;
+  border-left: 3px solid #322E2D;
+}
+.tutorial .information p {
+  padding: 10px 0px;
+}
+.tutorial ul {
+  font-size: 0;
+  list-style-type: none;
+}
+.tutorial ul li {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #e0e0e0; /*333*/
+  display: inline-block;
+  padding: 10px;
+  position: relative;
+}
+.tutorial ul li a {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #e0e0e0;
+  display: inline-block;
+  padding: 10px;
+  position: relative;
+  text-decoration: none; /* quitar subrayado por defecto*/
+  width: auto;
+}
+.tutorial ul li ul {
+  display: none;
+}
+.tutorial ul li a:hover {
+  cursor: pointer;
+  color: #4d494a;
+  background-color: #f2f2f2;
+}
+.tutorial ul li:hover ul {
+  display: block;
+  margin-top: 15px;
+  width: 200px;
+  left: 0;
+  position: absolute;
+}
+.tutorial ul li:hover ul li {
+  display: block;
+  color: #4d494a;
+  background-color: #e7e7e7;
+}
+.tutorial ul li:hover ul li span {
+  float: right;
+  color: #f9f9f9;
+  background-color: #322E2D;
+  padding: 2px 5px;
+  text-align: center;
+  font-size: 0.8rem;
+  border-radius: 3px;
+}
+.tutorial ul li:hover ul li:hover {
+  background-color: #e0e0e0;
+}
+.tutorial ul li:hover ul li:hover span {
+  background-color: #4B4644;
+}
+
+a,
+.input{
+  font-family: 'Arial', sans-serif;
+  text-decoration: none;
+  position: relative;
+  width: 80%;
+  margin: 9px auto;
+  font-size: 15px;
+  color: #fff;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  background: rgba(0, 0, 0, 0.487);
+  -webkit-transition: all 2s ease-in-out;
+  -moz-transition: all 2s ease-in-out;
+  -ms-transition: all 2s ease-in-out;
+  -o-transition: all 2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+input:focus{
+  outline: none;
+  box-shadow: 3px 3px 10px #333;
+  background: rgba(3,3,3,.18);
+}
+
+.styled-table {
+  border-collapse: collapse;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  margin-top: 25px;
+  
+}
+
+.styled-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  margin-right:50px;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+  text-align: center;
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+.styled-table tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.form{
+  background-color: white;
+  color: black;
+  border-radius: 6px;
+  padding: 5px;
+  margin-top: 15px;
+  -webkit-appearance: none;
+  border: 0;
+  outline: 0;
+  width: 70%;
+  font-size: 1.2rem;
+  height:25px;
+}
+.form:focus{
+  outline: none;
+  box-shadow: 6px 6px 20px #333;
+  background: white;
+  
+}
+
+button {
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+  background: #e62222;
+  padding-right:55px;
+}
+
+button, button span {
+  transition: 200ms;
+}
+
+button .text {
+  color: white;
+  font-weight: bold;
+}
+
+button .icon {
+  position: absolute;
+  border-left: 1px solid #c41b1b;
+  transform: translateX(100px);
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button svg {
+  width: 15px;
+  fill: #eee;
+}
+
+#btnlook:hover, #btnadd:hover {
+  background: #ff3636;
+}
+
+#btnlook:hover .text, #btnadd:hover .text{
+  color: transparent;
+}
+
+#btnlook:hover .icon, #btnadd:hover .icon {
+  width: 140px;
+  border-left: none;
+  transform: translateX(0);
+}
+
+#btnlook:focus, #btnadd:focus {
+  outline: none;
+}
+
+.two {
+  background-color: white;
+  display: initial; 
+  height: 
+  40px;
+  margin-top: 10px; 
+  padding: 0px;
+}
+
+.two:hover{
+  background-color: black;
+  color:white;
+}
