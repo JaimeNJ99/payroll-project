@@ -1,9 +1,8 @@
 <?php
   session_start();
-  $rol_session = $_SESSION['rol'];
-  if(isset($rol_session)){
-    if( $rol_session == 1) header('Location: ./menu_admin.php');
-    else if ($rol_session == 2 ) header('Location: ./menu_recepcionista.php');
+  if(isset($_SESSION['rol'])){
+    if( $_SESSION['rol'] == 1) header('Location: ./menu_admin.php');
+    else if ($_SESSION['rol'] == 2 ) header('Location: ./menu_recepcionista.php');
 }
 ?>
 
