@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 16-05-2022 a las 06:04:38
--- Versión del servidor: 10.4.22-MariaDB
--- Versión de PHP: 8.1.2
+-- Servidor: 127.0.0.1:3306
+-- Tiempo de generación: 20-09-2022 a las 17:37:37
+-- Versión del servidor: 8.0.27
+-- Versión de PHP: 8.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,10 +27,12 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `roles`
 --
 
-CREATE TABLE `roles` (
-  `id` int(2) NOT NULL,
-  `rol` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `roles`;
+CREATE TABLE IF NOT EXISTS `roles` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rol` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `roles`
@@ -38,8 +40,7 @@ CREATE TABLE `roles` (
 
 INSERT INTO `roles` (`id`, `rol`) VALUES
 (1, 'administrador'),
-(2, 'recepcionista'),
-(3, 'medico');
+(2, 'recepcionista');
 
 -- --------------------------------------------------------
 
@@ -47,12 +48,16 @@ INSERT INTO `roles` (`id`, `rol`) VALUES
 -- Estructura de tabla para la tabla `sesion`
 --
 
-CREATE TABLE `sesion` (
-  `idUsuario` int(10) NOT NULL,
+DROP TABLE IF EXISTS `sesion`;
+CREATE TABLE IF NOT EXISTS `sesion` (
+  `idUsuario` int NOT NULL AUTO_INCREMENT,
   `Nombre_usuario` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `Password` varchar(60) CHARACTER SET utf8 NOT NULL,
-  `rol_id` int(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `Password` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `rol_id` int NOT NULL,
+  PRIMARY KEY (`idUsuario`),
+  KEY `roles_id` (`rol_id`),
+  KEY `sesionrecep` (`Nombre_usuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `sesion`
@@ -60,8 +65,8 @@ CREATE TABLE `sesion` (
 
 INSERT INTO `sesion` (`idUsuario`, `Nombre_usuario`, `Password`, `rol_id`) VALUES
 (1, 'admin', '1234', 1),
-(2, 'recepcionista', '1234', 2),
-(3, 'BAHS333333HJCMSRA5', '1234', 3);
+(2, 'recepcionista', '1234', 1),
+(3, 'BAHS333333HJCMSRA5', '1234', 1);
 
 -- --------------------------------------------------------
 
@@ -69,58 +74,23 @@ INSERT INTO `sesion` (`idUsuario`, `Nombre_usuario`, `Password`, `rol_id`) VALUE
 -- Estructura de tabla para la tabla `trabajadores`
 --
 
-CREATE TABLE `trabajadores` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `trabajadores`;
+CREATE TABLE IF NOT EXISTS `trabajadores` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(50) NOT NULL,
   `Area` varchar(20) NOT NULL,
-  `Sueldo` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `Sueldo` double NOT NULL,
+  `Estatus` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Índices para tablas volcadas
+-- Volcado de datos para la tabla `trabajadores`
 --
 
---
--- Indices de la tabla `roles`
---
-ALTER TABLE `roles`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `sesion`
---
-ALTER TABLE `sesion`
-  ADD PRIMARY KEY (`idUsuario`),
-  ADD KEY `roles_id` (`rol_id`),
-  ADD KEY `sesionrecep` (`Nombre_usuario`);
-
---
--- Indices de la tabla `trabajadores`
---
-ALTER TABLE `trabajadores`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `roles`
---
-ALTER TABLE `roles`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT de la tabla `sesion`
---
-ALTER TABLE `sesion`
-  MODIFY `idUsuario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT de la tabla `trabajadores`
---
-ALTER TABLE `trabajadores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+INSERT INTO `trabajadores` (`id`, `Nombre`, `Area`, `Sueldo`, `Estatus`) VALUES
+(1, 'ejemplo1', 'ventas', 11000, 1),
+(3, 'ejemplo', 'marketing', 9000, 0);
 
 --
 -- Restricciones para tablas volcadas
