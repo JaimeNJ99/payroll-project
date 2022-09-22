@@ -137,7 +137,6 @@ input::placeholder {
     const btn1 = document.getElementById("btnadd");
     const btn2 = document.getElementById("btnlook");
     btn1.onclick = function () {
-        alert("Hello World")
         if (targetDiv1.style.display !== "block") {
             targetDiv1.style.display = "block";
             targetDiv2.style.display = "none";
