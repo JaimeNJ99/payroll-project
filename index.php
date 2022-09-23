@@ -19,24 +19,25 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
   <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'> -->
-  <link rel="stylesheet" href="/styles/style.css">
+  <!-- <link rel="stylesheet" href="/styles/style.css"> -->
+  <link rel="stylesheet" href="/styles/main.css">
   <link rel="icon" href="img/hospital.png">
 </head>
 <body>
-  <div class="center">
-    <h1>Login</h1>
-    <form name="contacto" method="post" action="php/IniciarSesion.php">
-      <div class="txt_field">
-        <input type="text" autocomplete="off" name="username" required>
-        <span></span>
+  <div>
+    <form class="login-form" name="contacto" method="post" action="php/IniciarSesion.php">
+      <h1>Login</h1>
+      <div class="field">
         <label>Nombre de usuario</label>
+        <input type="text" autocomplete="off" name="username" autofocus required>
       </div>
-      <div class="txt_field">
-        <input type="password" autocomplete="off" name="contraseña" required>
-        <span></span>
+      <div class="field">
         <label>Contraseña</label>
+        <input type="password" autocomplete="off" name="contraseña" required>
       </div>
-      <input type="submit" name = "ingresar" class="green" value="Ingresar">
+      <div class="field">
+        <button class="login-button" name="ingresar" >Login</button>
+      </div>
     </form>
   </div>
   <!-- partial -->

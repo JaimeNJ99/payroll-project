@@ -8,7 +8,7 @@
 body{
   margin: 0;
   padding: 0;
-  background: url('../img/fondOne.jpg') no-repeat center center fixed;
+  background: url('../img/loginBackground.jpg') no-repeat center center fixed;
   height: 100vh;
   overflow: hidden;
   background-repeat: no-repeat;
