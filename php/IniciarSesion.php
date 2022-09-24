@@ -5,13 +5,12 @@ require("conexion.php");
 session_start(); //inicia una nueva sesion o reanuda la existencia.
 $_SESSION['login'] = false;
 
-//declaracion de variables
-$username = $_POST["username"];
-$password = $_POST["contraseña"];
+//prevent SQL injection
+$username = mysqli_real_escape_string($connection, $_POST["username"]);
+$password = mysqli_real_escape_string($connection, $_POST["contraseña"]);
+
 //Evaluamos el nickname ingresado
-$consulta = "SELECT *
-             FROM sesion
-             WHERE Nombre_usuario = '$username'";
+$consulta = "SELECT * FROM sesion WHERE Nombre_usuario = '$username'";
 $consulta = mysqli_query($connection, $consulta);
 $consulta = mysqli_fetch_array($consulta);
 
@@ -30,12 +29,11 @@ if($consulta){
             default:
         }   
     }else{
-        echo "<script>alert('Contraseña incorrecta, por favor intente de nueva cuenta'); window.location = '../index.php';</script>";
+        header("Location: ../index.php?error=Incorrect username or password!");
+        exit();
     }
 }else{
-    echo "<script>alert('Usuario no existe, por favor intente de nueva cuenta'); window.location = '../index.php';</script>";
+    header("Location: ../index.php?error=Incorrect username or password!");
+    exit();
 }
-
-//Cerrando la conexion
-mysqli_close($conexion);
 ?>
