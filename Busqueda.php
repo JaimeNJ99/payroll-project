@@ -55,56 +55,64 @@
               <th>Nombre</th>
               <th>Trabajo</th>
               <th>Sueldo</th>
+              <th>Estatus</th>
             </tr>
           </thead>
           <tbody>
-            <?php
+            <?php // Busqueda segun la entrada
               if(isset($_GET['area'])){
                 $filtervalue = $_GET['area'];
                 $query = "SELECT * FROM trabajadores WHERE Area LIKE '$filtervalue'";
-                $query_run = mysqli_query($connection, $query);
-                if(mysqli_num_rows($query_run) > 0){
-                  foreach($query_run as $items){
-            ?>
-            <tr class="active-row">
-              <td><?= $items['id']; ?></td>
-              <td><?= $items['Nombre']; ?></td>
-              <td><?= $items['Area']; ?></td>
-              <td><?= $items['Sueldo']; ?></td>
-              <td><a id="toogle">Editar</a>
-              <a id="del">Borrar</a></td>
-            </tr>
-            <?php
-                }
-                }else{
-                  ?>
-                  <tr><td colspan="4">No hay nadie</td></tr>
-                  <?php
-                }
               }else if(isset($_GET['nombre'])){
-                $filtervalue = $_GET['nombre'];
-                $query = "SELECT * FROM trabajadores WHERE Nombre LIKE '$filtervalue'";
-                $query_run = mysqli_query($connection, $query);
-                if(mysqli_num_rows($query_run) > 0){
-                  foreach($query_run as $items){
-            ?>
-            <tr class="active-row">
-              <td><?= $items['id']; ?></td>
-              <td><?= $items['Nombre']; ?></td>
-              <td><?= $items['Area']; ?></td>
-              <td><?= $items['Sueldo']; ?></td>
-              <td><a id="toogle">Editar</a>
-              <a id="del">Borrar</a></td>
-            </tr>
-            <?php
-                  }
+                if($_GET['nombre'] == '')
+                  $filtervalue = "|sinBusqueda|";
+                else
+                  $filtervalue = $_GET['nombre'];
+                $query = "SELECT * FROM trabajadores WHERE Nombre LIKE '%$filtervalue%'";
+              }else if(isset($_GET['mayor'])){ 
+                if($_GET['mayor'] == ''){
+                  $query = "SELECT * FROM trabajadores WHERE id = 0";
                 }else{
-                  ?>
-                  <tr><td colspan="4">No hay nadie</td></tr>
-                  <?php
+                  $filtervalue = $_GET['mayor'];
+                  $query = "SELECT * FROM trabajadores WHERE Sueldo => '$filtervalue'";
+                }
+              }else if(isset($_GET['menor'])){
+                if($_GET['menor'] == ''){
+                  $query = "SELECT * FROM trabajadores WHERE id = 0";
+                }else{
+                  $filtervalue = $_GET['menor'];
+                  $query = "SELECT * FROM trabajadores WHERE Sueldo <= '$filtervalue'";
                 }
               }
+
+                $query_run = mysqli_query($connection, $query);
+                if(mysqli_num_rows($query_run) > 0){
+                  foreach($query_run as $items){
             ?>
+            <tr class="active-row">
+              <td><?= $items['id']; ?></td>
+              <td><?= $items['Nombre']; ?></td>
+              <td><?= $items['Area']; ?></td>
+              <td><?= $items['Sueldo']; ?></td>
+              <td><?php 
+                if($items['Estatus'] = 1){
+                    echo 'Activo';
+                }else{
+                    echo 'Inactivo';
+                } 
+              ?></td>
+              <td><a id="toogle">Editar</a>
+              <a id="del">Borrar</a></td>
+            </tr>
+            <?php
+                }
+                }else{
+                  ?>
+                  <tr><td colspan="4">No hay nadie</td></tr>
+                  <?php
+                }
+                mysqli_free_result($query_run); 
+                ?>
           </tbody>
         </table>
       </div>
@@ -133,7 +141,7 @@
     const del = document.getElementById("del");
     del.onclick = function () {
       if (confirm("Eliminar empleado?")) {
-        window.location='php/process.php?delete=<?php echo $items['id']; ?>';
+        window.location='php/process.php?delete=<?php if(mysqli_num_rows($query_run) > 0) echo $items['id']; ?>';
       } else {
         alert('Operaciones canceladas');
           }
@@ -147,4 +155,3 @@
     <!-- partial -->
     </body>
 </html>
-
