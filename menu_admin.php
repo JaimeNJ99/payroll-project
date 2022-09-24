@@ -23,7 +23,6 @@
         <title>Administrador | SBD</title>
         <link rel="stylesheet" href="/styles/estilo.css">
         <link rel="icon" href="img/hospital.png">
-        <!-- Muestra el elemento relacionado a la consulta -->
         <style>
             .styled-table tbody tr.active-row:hover {
     cursor: pointer;
@@ -63,10 +62,12 @@ input::placeholder {
                         <br>
                     </form>
                     <form action="Busqueda.php" method="GET">
-                        <!--<input class="input" type="text" autocomplete="off" name="area">-->
                         <select class="input" name="area">
                             <option value="marketing" selected>Marketing</option>
                             <option value="ventas">Ventas</option>
+                            <option value="recursos humanos">Recursos humanos</option>
+                            <option value="finanzas">Finanzas</option>
+                            <option value="producción">Producción</option>
                         </select>
                         <input class="input" type="submit" name = "submit" class="green" value="->" style="width: 30px">
                     </form>
@@ -113,8 +114,14 @@ input::placeholder {
                 <form action="php/process.php" method="POST">
                     <h2>Agregar empleado<br></h2>
                     <input class="form" type="text" autocomplete="off" placeholder="Nombre del empleado" name="nombreADD" required><br>
-                    <input class="form" type="text" autocomplete="off" placeholder="Area del empleado" name="areaADD" required><br>
-                    <input class="form" type="text" autocomplete="off" placeholder="Sueldo del empleado" name="sueldoADD" required><br>
+                    <select class="form" type="text" autocomplete="off"  name="areaADD" required>
+                        <option value="marketing" selected>Marketing</option>
+                        <option value="ventas">Ventas</option>
+                        <option value="recursos humanos">Recursos humanos</option>
+                        <option value="finanzas">Finanzas</option>
+                        <option value="producción">Producción</option>
+                    </select>
+                    <input class="form" type="number" autocomplete="off" placeholder="Sueldo del empleado" name="sueldoADD" required><br>
                     <button class="two" type="submit" name="save">Guardar datos</button>
                 </form>
             </div>
@@ -133,7 +140,6 @@ input::placeholder {
                         </thead>
                         <tbody>
                             <?php
-                                //$con = mysqli_connect("localhost", "root", "", "usuarioing");
                                 $query = "SELECT * FROM trabajadores";
                                 $query_run = mysqli_query($connection, $query);
                                 if(mysqli_num_rows($query_run) > 0){

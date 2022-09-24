@@ -110,8 +110,7 @@
                   ?>
                   <tr><td colspan="4">No hay nadie</td></tr>
                   <?php
-                }
-                mysqli_free_result($query_run); 
+                } 
                 ?>
           </tbody>
         </table>
@@ -121,9 +120,24 @@
             <form action="php/process.php" method="POST">
                 <h2>Editar información del empleado<br></h2>
                 <input type="text" style="display:none;" value="<?php echo $items['id'];?>" name="id"><br>
-                <div style="display: flex;"><p style="margin: 0px 15px 0% 20px; padding-top: 15px; font-family: 'Open Sans', 'sans serif'; font-size: 1.2rem; font-weight: bold;">Nombre</p><input class="form" type="text" autocomplete="off" value="<?php echo $items['Nombre'];?>" name="nombreADD" required></div>
-                <div style="display: flex;"><p style="margin: 0px 47px 0% 20px; padding-top: 15px; font-family: 'Open Sans', 'sans serif'; font-size: 1.2rem; font-weight: bold;">Area</p><input class="form" type="text" autocomplete="off" value="<?php echo $items['Area'];?>" name="areaADD" required></div>
-                <div style="display: flex;"><p style="margin: 0px 27px 0% 20px; padding-top: 15px; font-family: 'Open Sans', 'sans serif'; font-size: 1.2rem; font-weight: bold;">Sueldo</p><input class="form" type="text" autocomplete="off" value="<?php echo $items['Sueldo'];?>" name="sueldoADD" required></div>
+                <div style="display: flex;"> <!-- editar nombre -->
+                    <p style="margin: 0px 15px 0% 20px; padding-top: 15px; font-family: 'Open Sans', 'sans serif'; font-size: 1.2rem; font-weight: bold;">Nombre</p>
+                    <input class="form" type="text" autocomplete="off" value="<?php echo $items['Nombre'];?>" name="nombreADD" required>
+                </div>
+                <div style="display: flex;"> <!-- editar area -->
+                    <p style="margin: 0px 47px 0% 20px; padding-top: 15px; font-family: 'Open Sans', 'sans serif'; font-size: 1.2rem; font-weight: bold;">Area</p>
+                    <select class="form" type="text" autocomplete="off" name="areaADD" required>
+                        <option value="marketing" <?php if($items['Area'] == "marketing"){?> selected <?php } ?>>marketing</option>
+                        <option value="ventas" <?php if($items['Area'] == "ventas"){?> selected <?php } ?>>ventas</option>
+                        <option value="recursos humanos" <?php if($items['Area'] == "recursos humanos"){?> selected <?php } ?>>Recursos humanos</option>
+                        <option value="finanzas" <?php if($items['Area'] == "finanzas"){?> selected <?php } ?>>Finanzas</option>
+                        <option value="producción" <?php if($items['Area'] == "producción"){?> selected <?php } ?>>Producción</option>
+                    </select>
+                </div>
+                <div style="display: flex;"> <!-- editar salario -->
+                    <p style="margin: 0px 27px 0% 20px; padding-top: 15px; font-family: 'Open Sans', 'sans serif'; font-size: 1.2rem; font-weight: bold;">Sueldo</p>
+                    <input class="form" type="text" autocomplete="off" value="<?php echo $items['Sueldo'];?>" name="sueldoADD" required>
+                </div>
                 <button class="two" type="submit" name="edit">Guardar datos</button>
             </form>
         </div>
