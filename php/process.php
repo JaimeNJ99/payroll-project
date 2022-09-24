@@ -10,7 +10,7 @@
 
     if(isset($_GET['delete'])){
         $id = $_GET['delete'];
-        $connection->query("DELETE FROM trabajadores WHERE id=$id");
+        $connection->query("UPDATE trabajadores SET Estatus = '0' WHERE id=$id");
         echo "<script> window.location = '../menu_admin.php'; alert('Datos elimnados correctamente');</script>";
     }
 
