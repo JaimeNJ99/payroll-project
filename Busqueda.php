@@ -15,6 +15,7 @@
         <meta charset="UTF-8">
         <title>Administrador | SBD</title>
         <link rel="stylesheet" href="/styles/estilo.css">
+        <link rel="stylesheet" href="/styles/header.css">
         <link rel="icon" href="img/hospital.png">
         <style>
 
@@ -35,11 +36,12 @@
         </style>
     </head>
     <body>
+      <!-- Barra de navegación -->
+      <?php include("includes/header.php") ?>
+
     <div class="container">
     <div class="tutorial">
     <ul>
-      <div style="font-size:40px; float: left; color: white;padding-top: 15px; margin-right: 15px;">Inicio administrador</div>
-        <li><a href="php/cerrarSesion.php">Cerrar sesión </a></li>
         <li><a id="a" onclick="window.location='menu_admin.php'">Volver</a></li>
       </ul>
       <div class="slider">
@@ -161,6 +163,7 @@
           }
     };
   </script>
+  <script src="/js/app.js"></script>
       <div class="information">
       </div>
       </div>
