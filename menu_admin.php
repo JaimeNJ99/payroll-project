@@ -22,26 +22,25 @@
         <meta charset="UTF-8">
         <title>Administrador | SBD</title>
         <link rel="stylesheet" href="/styles/estilo.css">
+        <link rel="stylesheet" href="/styles/header.css">
         <link rel="icon" href="img/hospital.png">
         <style>
             .styled-table tbody tr.active-row:hover {
-    cursor: pointer;
-    border-style: solid;
-    border: 5px solid blue;  
-}
-input::placeholder {
-  color:gray;
-}
-
+                cursor: pointer;
+                border-style: solid;
+                border: 5px solid blue;  
+            }
+            input::placeholder {
+            color:gray;
+            }
         </style>
     </head>
     <body>
+        <!-- Barra de navegación -->
+        <?php include("includes/header.php") ?>
+
     <div class="container">
     <div class="tutorial">
-    <ul>
-      <div style="font-size:40px; float: left; color: white;padding-top: 15px; margin-right: 15px;">Inicio administrador</div>
-        <li><a id="a" href="php/cerrarSesion.php">Cerrar sesión </a></li>
-      </ul>
       <div class="slider">
         <br>
         <h2>Nóminas - Empresa</h2>
@@ -193,6 +192,7 @@ input::placeholder {
         }
     };
 </script>
+    <script src="/js/app.js"></script>
     </div><link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- partial -->

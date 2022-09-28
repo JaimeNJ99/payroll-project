@@ -5,7 +5,7 @@
     else if ($_SESSION['rol'] == 2 ) header('Location: ./menu_recepcionista.php');
 }
 ?>
-<?php include("includes/head.php") ?>
+<?php $title="Inicio | SBD"; include("includes/head.php") ?>
   <form class="login-form" name="contacto" method="post" action="php/IniciarSesion.php" onsubmit="return validation()" >
 
     <h1>Login</h1>
